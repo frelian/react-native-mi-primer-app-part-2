@@ -6,3 +6,4 @@
 ### Creando un contador 
 ### Usando el componente TouchableOpacity
 ### StyleSheet: abstraccion similar a CSS
+### Diseño boton personalizado flotante
