@@ -2,19 +2,21 @@ import React from 'react'
 import { View, TouchableOpacity, Text, StyleSheet, Style } from 'react-native';
 
 interface Props {
-    title: string
+    title: string;
+    position?: 'br' | 'bl';
+    onPress: () => void;
 }
 
 // Sin desestructurar el props: export const Fab = ( props: Props ) => {
 // Desestructuro el props segun la interfaz creada
-export const Fab = ( { title }: Props ) => {
+export const Fab = ( { title, onPress, position = 'br' }: Props ) => {
 
     // console.log(props.title)
 
     return (
         <TouchableOpacity
         style={ styles.fabLocationBR }
-        onPress={ () => console.log('Click') }
+        onPress={ onPress }
     >
         <View style={ styles.fab }>
             <Text style={ styles.fabText }>{ title }</Text>
