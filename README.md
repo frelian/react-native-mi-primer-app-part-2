@@ -4,4 +4,5 @@
 ### Hello world
 ### Pantallas independientes y estructura del proyecto
 ### Creando un contador 
+### Usando el componente TouchableOpacity
 

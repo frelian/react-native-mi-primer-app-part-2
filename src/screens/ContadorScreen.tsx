@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, TouchableOpacity } from 'react-native';
 
 export const ContadorScreen = () => {
 
@@ -20,10 +20,23 @@ export const ContadorScreen = () => {
             >
                 Contador: { contador }
             </Text>
-            <Button
+            {/* <Button
                 title='Agregar'
                 onPress={ () => setContador( contador + 1) }
-            />
+            /> */}
+
+            <TouchableOpacity
+                onPress={ () => setContador( contador + 1 ) }
+            >
+                <View style={{ 
+                    backgroundColor: 'gray',
+                    borderRadius: 80,
+                    paddingLeft: 10,
+                }}>
+                    <Text>Click me !</Text>
+                </View>
+            </TouchableOpacity>
+
         </View>
     )
 }
