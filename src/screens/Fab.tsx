@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, TouchableOpacity, Text, StyleSheet, Style } from 'react-native';
+import { View, TouchableOpacity, Text, StyleSheet, TouchableNativeFeedback } from 'react-native';
 
 interface Props {
     title: string;
@@ -9,32 +9,47 @@ interface Props {
 
 // Sin desestructurar el props: export const Fab = ( props: Props ) => {
 // Desestructuro el props segun la interfaz creada
+// FAB = Float Action Button ( solo un nombre personal )
 export const Fab = ( { title, onPress, position = 'br' }: Props ) => {
 
     // console.log(props.title)
 
+    // ( position === 'bl' )
+    //     ? styles.fabLocationBL
+    //     : styles.fabLocationBR
+
     return (
-        <TouchableOpacity
-        style={ styles.fabLocationBR }
-        onPress={ onPress }
-    >
-        <View style={ styles.fab }>
-            <Text style={ styles.fabText }>{ title }</Text>
+
+        <View
+            style={[
+                styles.fabLocation,
+                ( position === 'bl' ? styles.left : styles.right )
+            ]}
+        >
+            <TouchableNativeFeedback
+                onPress={ onPress }
+                background={ TouchableNativeFeedback.Ripple('#2d2d71', false, 30) }
+            >
+                <View style={ styles.fab }>
+                    <Text style={ styles.fabText }>{ title }</Text>
+                </View>
+            </TouchableNativeFeedback>
         </View>
-    </TouchableOpacity>
+
+
     )
 }
 
 const styles = StyleSheet.create({
 
-    fabLocationBR: {
+    fabLocation: {
         position: 'absolute',
         bottom: 25,
+    },
+    right: {
         right: 25
     },
-    fabLocationBL: {
-        position: 'absolute',
-        bottom: 25,
+    left: {
         left: 25
     },
     fab: {
@@ -42,7 +57,16 @@ const styles = StyleSheet.create({
         width: 60,
         height: 60,
         borderRadius: 100,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 6,
+        },
+        shadowOpacity: 0.37,
+        shadowRadius: 7.49,
+        
+        elevation: 8,
     },
     fabText: {
         color: 'white',
